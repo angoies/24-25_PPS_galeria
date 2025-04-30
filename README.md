@@ -1,4 +1,4 @@
-# Galeria
+# Galeria ejemplo
 
 Aplicación de ejemplo para usar en práctica Deploy de contenedor Docker en EC2 AWS.
 
