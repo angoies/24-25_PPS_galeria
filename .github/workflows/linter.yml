@@ -2,11 +2,16 @@ name: Lint Python
 
 on:
   push:
-    paths:
-      - '**.py'
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+    
+    # se comenta para no interferir en protección de ramas
+    # paths:
+    #   - '**.py'
 
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

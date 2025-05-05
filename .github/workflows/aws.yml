@@ -1,10 +1,20 @@
 name: remote ssh command
 
-on: [push]
+
+env:
+  IMAGE_NAME: angoies/galeria
+  # FILES: compose.yml
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+
 
 jobs:
-  build:
-    name: Build
+  deploy:
+    name: deploy en AWS
     runs-on: ubuntu-latest
     steps:
       - name: multiple command
@@ -15,5 +25,5 @@ jobs:
           key: ${{ secrets.AWS_PRIVATE_KEY }}
           port: 22 # ${{ secrets.PORT }}
           script: |
-            docker stop web1 && docker rm web1 && docker rmi angoies/galeria
-            docker run -d -p 80:5000 --name web1 angoies/galeria
+            docker rm -f web1 && docker rmi ${{ env.IMAGE_NAME }}
+            docker run -d -p 80:5000 --name web1 ${{ env.IMAGE_NAME }}
