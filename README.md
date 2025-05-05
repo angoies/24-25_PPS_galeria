@@ -39,7 +39,7 @@ $ source venv/bin/activate
 
     ```console
     $ docker build -t user_docker/testing .
-    $ docker run -d p 80:5000  user_docker/testing
+    $ docker run -d -p 80:5000  user_docker/testing
     $ curl localhost:80
     $ firefox localhost &
     ``` 
