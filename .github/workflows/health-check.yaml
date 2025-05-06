@@ -1,0 +1,22 @@
+name: Health
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  healthcheck:
+    runs-on: ubuntu-latest
+    needs: deploy
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - name: Comprobar estado de la app
+        uses: dawidd6/action-http-client@v3
+        with:
+          url: http://${{ secrets.AWS_HOSTNAME }}
+          method: GET
+          timeout: 10
+          expected_status: 200
