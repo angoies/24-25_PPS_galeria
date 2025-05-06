@@ -48,7 +48,7 @@ $ source venv/bin/activate
 
     ```console
     systemctl restart NetworkManager.service
-    sudo service docker restart
+    sudo service docker restart 
     ``` 
 
 
