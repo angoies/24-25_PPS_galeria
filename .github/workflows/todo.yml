@@ -1,5 +1,14 @@
 name: CI/CD completo
 
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+    
+    # se comenta para no interferir en protección de ramas
+    # paths:
+    #   - '**.py'
 env:
   IMAGE_NAME: galeria
   # FILES: compose.yml
@@ -11,15 +20,7 @@ env:
 # AWS_USERNAME
 # AWS_PRIVATEKEY
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-    
-    # se comenta para no interferir en protección de ramas
-    # paths:
-    #   - '**.py'
+
 
 jobs:
 
